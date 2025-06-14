@@ -20,4 +20,4 @@ def cadastro(request):
         #devolve o formulário vazio
         form = UserCreationForm()
 
-    return render(request, 'home/home.html', {'form': form})
+    return render(request, 'cadastro/cadastro.html', {'form': form})
