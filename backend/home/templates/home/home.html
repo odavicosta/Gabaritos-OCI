@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,6 +10,12 @@
 <body>
     <h1>Home</h1>
 
-    
+    <form method="post" enctype="multipart/form-data" action="/home/">
+        {% csrf_token %}
+        <input type="file" name="imagem">
+        <button type="submit">Enviar imagem</button>
+    </form>
 </body>
+</html>
+
 </html>
