@@ -1,7 +1,3 @@
-# /Gabaritos-OCI/docker-compose.yml
-
-version: '3.8'
-
 services:
   backend:
     build: ./backend
@@ -10,19 +6,22 @@ services:
     volumes:
       - ./backend:/app
     environment:
-      - DATABASE_URL=postgresql://postgres:minhasenha@db:5432/oci_db
+      - DATABASE_URL=mysql://oci_user:oci_pass@db:3306/oci_db
       - SECRET_KEY=sua-senha-super-dificil-de-adivinhar-aqui
     depends_on:
       - db
 
   db:
-    image: postgres:15
+    image: mysql:8.0
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=minhasenha
-      - POSTGRES_DB=oci_db
+      MYSQL_ROOT_PASSWORD: umasenhaforteparaoroot # Senha do superusuário 'root'
+      MYSQL_DATABASE: oci_db          # Nome do banco de dados que será criado
+      MYSQL_USER: oci_user            # Um novo usuário que será criado para a aplicação
+      MYSQL_PASSWORD: oci_pass        # A senha para esse novo usuário
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+    - mysql_data:/var/lib/mysql
+    ports:
+    - "3306:3306"
 
 volumes:
-  postgres_data:
+  mysql_data:

@@ -7,7 +7,7 @@ FROM python:3.10-slim-bookworm
 ENV PYTHONUNBUFFERED 1
 
 # 3. Instala dependências do S.O. (compilador C/C++ etc)
-RUN apt-get update && apt-get install -y build-essential gcc g++
+RUN apt-get update && apt-get install -y build-essential gcc g++ pkg-config default-libmysqlclient-dev
 
 # 4. Define o diretório de trabalho dentro do container
 WORKDIR /app
