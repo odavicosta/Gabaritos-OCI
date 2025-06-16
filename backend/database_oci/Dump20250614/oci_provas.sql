@@ -26,8 +26,8 @@ DROP TABLE IF EXISTS `provas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `provas` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `modalidade` varchar(30) NOT NULL,
-  `fase` tinyint unsigned NOT NULL,
+  `modalidade` varchar(30) DEFAULT NULL,
+  `fase` tinyint unsigned DEFAULT NULL,
   `data_prova` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
