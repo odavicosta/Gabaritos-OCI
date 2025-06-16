@@ -2,3 +2,4 @@ Django==4.2
 gunicorn==21.2.0
 mysqlclient==2.2.4
 django-widget-tweaks
+dj-database-url==0.5.0

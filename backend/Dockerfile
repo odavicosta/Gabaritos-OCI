@@ -1,6 +1,6 @@
 FROM ubuntu:24.04
 
-# Instala as dependências de sistema MÍNIMAS que precisamos
+# Instala as dependências de sistema MÍNIMAS
 RUN apt-get update && \
     apt-get install -y \
     python3.12 \
@@ -22,7 +22,6 @@ RUN ldconfig
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir --break-system-packages -r requirements.txt
 
-# Copia o resto do código da sua aplicação
 COPY . .
 
 # Expõe a porta e inicia o servidor
