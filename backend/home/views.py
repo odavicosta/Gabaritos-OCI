@@ -3,9 +3,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import GabaritoForm
 from .models import Gabarito, Aluno, Prova
 from .leitor_interface import ler_prova_por_dados
+from django.contrib.auth.models import User
 import os
 
-#@login_required
+@login_required
 def index(request):
     if request.method == 'POST':
         # Caso 1: Upload de imagem

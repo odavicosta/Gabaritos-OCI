@@ -1,0 +1,28 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Gabarito OCI{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'media/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'media/css/tooplate-style.css' %}">
+    <link rel="icon" href="{%static 'media/img/oci-velas.png'%}" type="image/png">
+</head>
+<body>
+    <div id="tm-bg"></div>
+    <header>
+        
+        
+    </header>
+    
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
+    <footer id="rodape">
+        <p> © 2025 - GABARITO OCI</p>
+    </footer>
+</body>
+</html>

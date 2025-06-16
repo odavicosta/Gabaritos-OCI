@@ -1,0 +1,117 @@
+h1 {  /* Título das páginas */
+  font-size: 2.8rem;
+  color: #ffffff;
+  text-align:center;
+  margin-top: 4%;
+}
+
+
+#tm-bg {  /* Background da página */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #353541;
+  background-image: url(../img/bg.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+.btn { /* Botões em geral cadastrar/entrar/procurar/enviar imagem */
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1.2rem;
+  background-color: #ffffff;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  color:black;
+  display: block;
+  width: 6%;
+}
+
+.btn:hover { /* Detalhe de mudar a cor quando passa o mouse em cima dos botões */
+  border-radius: 8px;
+  background-color: #198ac3;
+  border-color: transparent;
+  color: white;
+}
+
+#troca{ /* Botão que fica embaixo para trocar entre login e cadastro */
+  text-align: center;
+  margin-top: 10px;;
+  margin-bottom: 10px;  
+  margin-left: 46%;
+  margin-right: 46%;
+  border-radius: 8px;
+  padding: 10px;
+  display:block;
+  color: rgb(255, 255, 255);
+} 
+
+#Cabecalho {  /* Cabeçalho do home */
+  margin-top: 10px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.adicionar > *{
+  margin: 0 !important;
+}
+
+.adicionar{ /* Essa classe e a anterior são referentes aos botões do home que adicionam as fotos */
+  margin-top: 30px;
+  justify-content: center;
+  display: flex;
+  gap: 50px;
+}
+
+.form-group{  /* Bloco de respostas de login e cadastro */
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 350px;
+  position: middle;
+  color: rgb(255, 255, 255);
+}
+
+.form-control { /* Mais configurações do bloco de respostas de login e cadastro */
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #ffffff;
+  color: rgb(122, 122, 122);
+  padding: 0.75rem;
+}
+
+.form-control:focus { /* Quando o bloco de resposta está selecionado */
+  color: rgb(86, 85, 85);
+  background-color: #ffffff;
+  border-color: transparent;
+}
+
+footer {  /* Rodapé de todos os sites */
+  position: absolute;
+  bottom: 30px;
+  text-align: center;
+  left: 0;
+  right: 0;
+}
+
+#rodape {  /* rodape do base.html */
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+#logo {  /* Logo do site */
+  justify-content: center;
+  top: 8px;
+  left: 8px;
+  width: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
