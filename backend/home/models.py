@@ -1,7 +1,12 @@
 from django.db import models
 from alunos.models import Aluno
+from django.contrib.auth.models import User
+
+
+
 
 class Prova(models.Model):
+    
     modalidade = models.CharField(max_length=30, default='nenhuma')
     fase = models.IntegerField(default=1)
 
@@ -13,6 +18,7 @@ class Prova(models.Model):
 
     
 class Gabarito(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, db_column='nome_arquivo')
     aluno = models.ForeignKey(Aluno, on_delete=models.CASCADE, db_column='id_alunos')
     prova = models.ForeignKey(Prova, on_delete=models.CASCADE, db_column ='id_prova')
     leitura = models.CharField(max_length=255)

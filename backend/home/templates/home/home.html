@@ -2,36 +2,25 @@
 {% load widget_tweaks %}
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-        <h1 id="Cabecalho">Home</h1>
-        <form class="adicionar" method="post" enctype="multipart/form-data" action="/home/">
-            {% csrf_token %}
-            <label class="btn" id="botao-escolher">
-                <input type="file", name="imagem", class="btn btn-submit", style="display: none;">Procurar
-            </label>
-            <button class="btn", type="submit">Enviar imagem</button>
-        </form>
+<h1 id="Cabecalho">Home</h1>
+<form class="adicionar" method="post" enctype="multipart/form-data" action="/home/">
+    {% csrf_token %}
+    <label class="btn" id="botao-escolher">
+        <input type="file" name="imagem" class="btn btn-submit" style="display: none;">Procurar
+    </label>
+    <button class="btn" type="submit">Enviar imagem</button>
+</form>
 
-    <h2>Alunos cadastrados</h2>
-    <ul>
-        {% for aluno in alunos %}
-        <li>
-            <a href="{% url 'detalhe_aluno' aluno.id %}">Aluno {{ aluno.id }}</a>
-        </li>
-        {% empty %}
-        <li>Nenhum aluno encontrado.</li>
-        {% endfor %}
-    </ul>
-
-</body>
-</html>
-
-</html>
+<h2>Alunos cadastrados:</h2>
+<div class ="alunos-lista">
+<ul>
+    {% for gabarito in gabaritos %}
+    <li>
+        <a style="color:white" href="{% url 'detalhe_aluno' gabarito.aluno.id %}">Aluno {{ gabarito.aluno.id }}</a>
+    </li>
+    {% empty %}
+    <li>Nenhum aluno encontrado.</li>
+    {% endfor %}
+</ul>
+</div>
 {% endblock %}

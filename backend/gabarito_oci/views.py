@@ -24,4 +24,4 @@ def cadastro(request):
         #devolve o formulário vazio
         form = MeuFormularioDeCadastro()
 
-    return render(request, 'cadastro.html', {'form': form})
+    return render(request, 'cadastro/cadastro.html', {'form': form})

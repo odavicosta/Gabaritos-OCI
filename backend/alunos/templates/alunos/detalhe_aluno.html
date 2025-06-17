@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
 <body>
     <h1>Detalhes do Aluno {{ aluno.id }}</h1>
 
     <h2>Gabaritos</h2>
+    <div class ="provas-lista">
     <ul>
         {% for gabarito in gabaritos %}
         <li>
@@ -18,8 +15,10 @@
         <li>Nenhum gabarito encontrado.</li>
         {% endfor %}
     </ul>
+    </div>
 
-<a href="{% url 'home' %}">Voltar para a lista de alunos</a>
+<a id="troca"  href="{% url 'home' %}">Voltar</a>
 
 </body>
 </html>
+{% endblock %}

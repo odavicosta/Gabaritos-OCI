@@ -19,13 +19,17 @@ def index(request):
             aluno, _ = Aluno.objects.get_or_create(id=resultado["id_participante"])
             prova, _ = Prova.objects.get_or_create(id=resultado["id_prova"])
             
-            # Preenche o formulário com os dados lidos
-            form = GabaritoForm(initial={
-                'aluno': resultado['id_participante'],
-                'prova': resultado['id_prova'],
-                'leitura': resultado['leitura'],
-                'erro': resultado['erro'],
-            })
+
+
+           
+            gabarito = Gabarito(
+                            aluno=aluno,
+                            prova=prova,
+                            leitura=resultado['leitura'],
+                            erro=resultado['erro'],
+                        )
+            form = GabaritoForm(instance=gabarito)
+
 
             return render(request, 'home/confirmar_dados.html', {'form': form})
 
@@ -33,15 +37,22 @@ def index(request):
         else:
             form = GabaritoForm(request.POST)
             if form.is_valid():
-                form.save()
+                gabarito = form.save(commit=False)
+                gabarito.usuario = request.user
+                gabarito.save()
+                
                 return redirect('home')  # Ou uma página de sucesso
             else:
+                erro = int(request.POST.get("erro", -1))  # ou outro valor padrão
+
                 mensagem_erro = {
                 0: "✓ Leitura bem-sucedida.",
                 1: "⚠ Erro de leitura do código Aztec.",
                 2: "⚠ Erro na identificação da área de leitura.",
                 3: "✖ Erro fatal durante a leitura."
-                }.get(resultado['erro'], "Erro desconhecido.")
+                }.get(erro, "Erro desconhecido.")
+
+               
 
                 return render(request, 'home/confirmar_dados.html', {
                     'form': form,
@@ -49,6 +60,9 @@ def index(request):
 
                 })
 
-    # GET: exibe lista de alunos na home
-    alunos = Aluno.objects.all()
-    return render(request, 'home/home.html', {'alunos': alunos})
+   
+    # GET: mostra só os alunos do usuário logado
+    gabaritos = Gabarito.objects.filter(usuario=request.user)
+
+    return render(request, 'home/home.html', {'gabaritos': gabaritos})
+    
